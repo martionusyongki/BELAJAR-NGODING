@@ -1,0 +1,68 @@
+SHOW VARIABLES LIKE 'max_connections';
+show status where `variable_name` = 'Threads_connected';
+show processlist;
+SHOW STATUS WHERE `variable_name` = 'Max_used_connections';
+SHOW VARIABLES LIKE 'wait_timeout';
+SHOW VARIABLES LIKE 'connect_timeout';
+
+SET GLOBAL max_connections = 1024;
+SET GLOBAL connect_timeout=60;
+SET GLOBAL wait_timeout=28800‬;
+
+slmgr -rearm
+
+KILL CONNECTION 7114;
+
+ALTER TABLE history_mshippingaddress ADD promo_yn bit after remarks_approval;
+ALTER TABLE minvent_pricelistpurchase ADD id_tax varchar (50);
+ALTER TABLE Customers DROP COLUMN ContactName;
+
+ALTER TABLE muser MODIFY pass_user varchar(20);
+
+DROP EVENT IF EXISTS Inactive_Period;
+DROP PROCEDURE IF EXISTS sp_cariDObyPickingList;
+DROP TABLE IF EXISTS table1;
+
+ALTER TABLE mvehicle DROP PRIMARY KEY;
+ALTER TABLE mvehicle ADD PRIMARY KEY(no_fleet,id_depot);
+
+
+
+Backup database mysql 5.6.10
+CD C:\Program Files\MySQL\MySQL Server 5.6\bin
+mysqldump --database --routines --events --host=localhost --user=lcy --port=33066 --password=121212 lcysolutions > D:\lcysolutions.sql
+mysql --host=localhost --force --user=lcy --port=33066 --password=121212 < D:\lcysolutions_test.sql
+
+Backup database mysql 8.0.37
+CD C:\Program Files\MySQL\MySQL Server 8.0\bin
+mysqldump --databases --routines --events --host=localhost --user=lcy --port=33066 --password=121212 lcysolutions > D:\lcysolutions.sql
+mysql --host=localhost --user=lcy --port=33066 --password=121212 < D:\lcysolutions_test.sql
+
+
+
+show procedure status;
+update mysql.proc set definer ='root@localhost'
+
+
+
+https://www.techonthenet.com/mysql/tables/alter_table.php#:~:text=The%20syntax%20to%20add%20a,table_name
+
+
+if(Int ({sp_rpt_TargetVsAchievementbyItem_Todate.targetqty}) <>{sp_rpt_TargetVsAchievementbyItem_Todate.targetqty}) then
+2
+else
+0
+
+
+
+CARI HARI SENIN 
+
+SELECT * FROM SC_HEAD WHERE DATE_SC BETWEEN (SELECT DATE_ADD(('2024-04-19' - INTERVAL (WEEKDAY('2024-04-19')+1)DAY),INTERVAL 1 DAY)) AND '2024-04-19';
+
+
+echo '<pre>'; print_r($data); echo '</pre>';
+session()->get('is_login')
+$('#txtUserID').attr({'readonly':true});
+
+
+select * from 9tbl_employee where find_in_set (id, '1,2');
