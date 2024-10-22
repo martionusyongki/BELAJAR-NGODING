@@ -42,7 +42,7 @@ class HelloControllerTest {
     }
 
     @Test
-    void helloGuestPost() throws Exception {
+    void helloPost() throws Exception {
         mockMvc.perform(
                 post("/hello")
         ).andExpectAll(

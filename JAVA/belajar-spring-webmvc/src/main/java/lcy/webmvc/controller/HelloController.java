@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lcy.webmvc.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,7 +17,7 @@ public class HelloController {
     @Autowired
     private HelloService helloService;
 
-    @RequestMapping(path = "/hello", method = RequestMethod.GET)
+    @GetMapping(path = "/hello")
     public void helloWorld(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String name = request.getParameter("name");
         String responseBody = helloService.hello(name);
