@@ -40,4 +40,13 @@ class HelloControllerTest {
                 content().string(Matchers.containsString("Hello LCY"))
         );
     }
+
+    @Test
+    void helloGuestPost() throws Exception {
+        mockMvc.perform(
+                post("/hello")
+        ).andExpectAll(
+                status().isMethodNotAllowed()
+        );
+    }
 }
