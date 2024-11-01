@@ -1,7 +1,5 @@
 package lcy.restful.controller;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
-import lcy.restful.entity.Contact;
 import lcy.restful.entity.User;
 import lcy.restful.model.*;
 import lcy.restful.service.ContactService;
@@ -10,7 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.PublicKey;
 import java.util.List;
 
 @RestController
