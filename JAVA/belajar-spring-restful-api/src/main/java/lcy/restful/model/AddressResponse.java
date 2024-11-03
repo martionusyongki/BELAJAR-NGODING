@@ -1,6 +1,5 @@
 package lcy.restful.model;
 
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
