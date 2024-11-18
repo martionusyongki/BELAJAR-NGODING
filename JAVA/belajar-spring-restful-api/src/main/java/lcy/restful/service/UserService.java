@@ -26,7 +26,7 @@ public class UserService {
     public void register(RegisterUserRequest request) {
         validateService.validate(request);
 
-        if (userRepository.existsById(request.getName())){
+        if (userRepository.existsById(request.getUsername())){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Username already registered");
         }
 

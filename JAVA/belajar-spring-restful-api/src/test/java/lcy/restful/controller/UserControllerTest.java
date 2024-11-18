@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lcy.restful.entity.User;
 import lcy.restful.model.*;
+import lcy.restful.repository.AddressRepository;
+import lcy.restful.repository.ContactRepository;
 import lcy.restful.repository.UserRepository;
 import lcy.restful.security.BCrypt;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,10 +32,18 @@ class UserControllerTest {
     private UserRepository userRepository;
 
     @Autowired
+    private ContactRepository contactRepository;
+
+    @Autowired
+    private AddressRepository addressRepository;
+
+    @Autowired
     private ObjectMapper objectMapper;
 
     @BeforeEach
     void setUp() {
+        addressRepository.deleteAll();
+        contactRepository.deleteAll();
         userRepository.deleteAll();
     }
 
@@ -84,21 +94,22 @@ class UserControllerTest {
     @Test
     void testRegisterDuplicate() throws Exception{
         User user = new User();
-        user.setUsername("test");
+        user.setUsername("1");
         user.setPassword(BCrypt.hashpw("rahasia", BCrypt.gensalt()));
         user.setName("Yongki");
         userRepository.save(user);
 
         RegisterUserRequest request = new RegisterUserRequest();
-        request.setUsername("");
-        request.setPassword("");
-        request.setName("");
+        request.setUsername("1");
+        request.setPassword(BCrypt.hashpw("rahasia", BCrypt.gensalt()));
+        request.setName("Yongki");
 
         mockMvc.perform(
                 post("/api/users")
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request))
+
         ).andExpectAll(
                 status().isBadRequest()
         ).andDo(result -> {
