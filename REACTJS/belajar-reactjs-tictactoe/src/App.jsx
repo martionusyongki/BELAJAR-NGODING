@@ -2,7 +2,11 @@
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 
-function App() {
+function Square() {
+    return <button className="square">X</button>;
+}
+
+export default function App() {
     return (
         <>
             <div>
@@ -12,8 +16,18 @@ function App() {
             <div className="card">
                 <button>New Game</button>
             </div>
+
+            <div className="board">
+                <Square />
+                <Square />
+                <Square />
+                <Square />
+                <Square />
+                <Square />
+                <Square />
+                <Square />
+                <Square />
+            </div>
         </>
     );
 }
-
-export default App;
